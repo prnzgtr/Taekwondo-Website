@@ -15,9 +15,9 @@
   /* change these to use your images */
   --img-hero: url('dojo.png');
   --img-hero-figure: url('figure.png');
-  --img-schedule-bg: url('schedule-bg.jpg');
-  --img-instructors-bg: url('instructors-bg.jpg');
-  --img-contact-bg: url('contact-bg.jpg');
+  --img-schedule-bg: url('schedule-bg.png');
+  --img-instructors-bg: url('instructors-bg.png');
+  --img-contact-bg: url('contact-bg.png');
 
   --container-width:1200px;
   --card-radius:12px;
@@ -69,3 +69,565 @@ body{
   display: block;
   transition: transform 0.4s ease;
 }
+
+.ach-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  padding: 8px 12px;
+  color: #fff;
+  font-weight: 700;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
+  transition: opacity 0.3s ease;
+}
+
+/* Default state of all cards */
+.achievements-grid:hover .achievement {
+  opacity: 0.6;
+  transform: scale(0.95);
+}
+
+/* Highlighted (hovered) card */
+.achievements-grid .achievement:hover {
+  opacity: 1;
+  transform: scale(1.15);
+  z-index: 5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.achievements-grid .achievement:hover img {
+  transform: scale(1.05);
+}
+
+.achievements-grid .achievement:hover .ach-caption {
+  opacity: 1;
+}
+
+/* Mobile tweak - disable hover scaling for touch screens */
+@media (hover: none) {
+  .achievements-grid:hover .achievement,
+  .achievements-grid .achievement:hover {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Hero */
+/* ===== Hero Section (Responsive) ===== */
+#hero {
+  display: flex;
+  flex-wrap: wrap; /* allow stacking on small screens */
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px 8%;
+  background: url("dojo.png") center/cover no-repeat;
+  min-height: 100vh;
+  position: relative;
+}
+
+.hero-content {
+  flex: 1 1 500px;
+  max-width: 550px;
+  z-index: 2;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.hero-buttons .btn {
+  padding: 12px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hero-buttons .btn-primary {
+  background: #d62828;
+  color: #fff;
+}
+
+.hero-buttons .btn-primary:hover {
+  background: #b31f1f;
+}
+
+.hero-buttons .btn-secondary {
+  background: #fff;
+  color: #111;
+}
+
+.hero-buttons .btn-secondary:hover {
+  background: #ddd;
+}
+
+/* Hero Image */
+.hero-image {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ===== Responsive Behavior ===== */
+@media (max-width: 992px) {
+  #hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 80px 5%;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    margin-bottom: 30px;
+  }
+
+  .hero-image img {
+    max-width: 300px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-image img {
+    max-width: 250px;
+  }
+}
+
+
+/* Buttons */
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:700}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:rgba(255,255,255,0.9);color:#111}
+
+/* Sections */
+.section{padding:60px 0}
+.section-title{font-size:28px;text-align:center;margin-bottom:28px;font-weight:900}
+.accent{color:var(--accent)}
+
+/* Programs grid */
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 🔹 exactly 3 per row */
+  gap: 20px;
+  margin-top: 20px;
+  justify-items: stretch;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+  border: 1px solid #f0f0f0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* subtle hover effect for programs */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .program-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .program-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Schedule section with background */
+.schedule{background-image: url("schedule-bg.png");
+  background-size:cover;background-position:center;}
+.schedule-table-wrap{max-width:900px;margin:0 auto}
+.schedule-table{width:100%;border-collapse:collapse;background:rgba(255,255,255,0.92);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.schedule-table th, .schedule-table td{padding:12px 14px;border-bottom:1px solid #eee;text-align:left}
+.schedule-table thead th{background:var(--brand);color:#fff;font-weight:700}
+.muted{color:var(--muted);font-size:13px;margin-top:8px}
+
+/* Membership */
+.membership-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.price-card{background:#fff;padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center}
+.price{font-weight:900;font-size:20px;margin:8px 0}
+
+/* Instructors */
+/* ===== Instructors Section ===== */
+.instructors-section {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 80px 0;
+  background: url("instructor-bg.png") center/cover no-repeat;
+  img:hover { filter: brightness(1.1); }
+  img { transition: filter 0.3s ease; }
+  
+}
+
+.instructors-section .section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.instructors-section .section-subtitle {
+  color: #ccc;
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
+
+.instructors-container {
+  /* use auto-fit so cards wrap and always share available space evenly */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  justify-items: center;
+  align-items: start;
+  padding: 0 40px;
+  width: 100%;
+}
+
+/* keep cards flexible but constrained so they size consistently */
+.instructor-card {
+  background: #111;
+  border: 2px solid #222;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 320px; /* allow slightly wider cards on large screens */
+  box-sizing: border-box;
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.instructor-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: transform 0.35s ease;
+}
+
+.instructor-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.instructor-card p {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.instructor-card .stars {
+  color: #f5b400;
+  font-size: 1.1rem;
+}
+
+/* Hover Effect */
+.instructor-card:hover {
+  transform: scale(1.08);
+  border-color: #e63946;
+  box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+}
+
+.instructor-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+  .instructors-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .instructors-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Achievements */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 🔹 exactly 3 per row */
+  gap: 20px;
+  transition: all 0.3s ease;
+  justify-items: center;
+}
+
+.achievement {
+  width: 100%;
+  max-width: 340px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease;
+}
+
+.achievement img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.ach-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  padding: 8px 12px;
+  color: #fff;
+  font-weight: 700;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
+  transition: opacity 0.3s ease;
+}
+
+/* Hover effect (focus on one) */
+.achievements-grid:hover .achievement {
+  opacity: 0.6;
+  transform: scale(0.95);
+}
+
+.achievements-grid .achievement:hover {
+  opacity: 1;
+  transform: scale(1.15);
+  z-index: 5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.achievements-grid .achievement:hover img {
+  transform: scale(1.05);
+}
+
+.achievements-grid .achievement:hover .ach-caption {
+  opacity: 1;
+}
+
+/* Responsive behavior */
+@media (max-width: 900px) {
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* About */
+.about-text{max-width:800px;margin:0 auto;text-align:center;color:#333}
+/* ===== About Section — Belt & Neck Visual ===== */
+/* ===== About Section — Belt & Neck Visual ===== */
+#about {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+#about .section-title,
+#about .about-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* Neck image centered behind the About text */
+.belt-neck {
+  position: absolute;
+  top: 20%;               /* adjust this to move up/down */
+  left: 50%;
+  transform: translate(-50%, -20%) scale(1.8); /* Centered + enlarged */
+  opacity: 0.12;          /* faint background */
+  z-index: 0;
+  width: 600px;
+  max-width: 90%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Belt image visible below text */
+.belt-img {
+  position: relative;
+  display: block;
+  margin: 100px auto 0;
+  width: 400px;
+  max-width: 95%;
+  height: auto;
+  transform: scale(1.4);
+  z-index: 1;
+}
+
+/* Fade-in animation */
+.belt-graphic img {
+  animation: fadeIn 1.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px) scale(1.2); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .belt-neck {
+    transform: translate(-50%, -10%) scale(1.3);
+    width: 400px;
+    top: 25%;
+  }
+  .belt-img {
+    transform: scale(1.1);
+    width: 280px;
+    margin-top: 80px;
+  }
+}
+
+
+
+/* Contact */
+.contact{background-image: url("contact-bg.png");
+  background-size:cover;background-position:center;color:#111}
+.contact-form{max-width:680px;margin:0 auto;display:grid;gap:10px}
+.contact-form input, .contact-form textarea{
+  padding:10px;border-radius:8px;border:1px solid #ddd;font-size:15px
+}
+/* ===== Achievements Loop Animation (Seamless Infinite) ===== */
+.achievements-loop-section {
+  background-color: #fff;
+  padding: 60px 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.achievements-loop-section .section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #d62828;
+  margin-bottom: 40px;
+}
+
+.achievements-loop-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.achievements-track {
+  display: flex;
+  gap: 40px;
+  width: max-content; /* important for continuous flow */
+  animation: loop-scroll 30s linear infinite;
+}
+
+.achievements-track img {
+  width: 260px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Pause and zoom on hover */
+.achievements-loop-container:hover .achievements-track {
+  animation-play-state: paused;
+}
+
+.achievements-track img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Seamless infinite horizontal scroll */
+@keyframes loop-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .achievements-track img {
+    width: 180px;
+    height: 140px;
+  }
+}
+
+/* Footer */
+.site-footer{background:#111;color:#fff;padding:28px 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.site-footer a{color:#fff;text-decoration:none}
+
+/* Responsive tweaks */
+@media (max-width:900px){
+  .hero h1{font-size:34px}
+  .hero-figure{width:220px;right:8px}
+  .instructor-row{justify-content:space-around}
+  .main-nav{display:none}
+}
+
+/* Accessibility focus states */
+a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(200,24,29,0.18);outline-offset:3px}
