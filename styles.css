@@ -35,10 +35,105 @@ body{
 .container{max-width:var(--container-width);margin:0 auto;padding:0 20px}
 
 /* Header */
-.site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:60}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.logo{font-weight:800;letter-spacing:1px}
-.logo-sub{display:block;font-weight:600;font-size:12px;color:var(--muted)}
+/* ===== Header Layout ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  z-index: 60;
+  width: 100%;
+}
+
+/* FLEX container without centered constraints */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* push logo left, nav right */
+  width: 100%;
+  padding: 12px 60px; /* adjust side spacing */
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Remove container centering if inherited */
+.container {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* LOGO area */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+#AgilaLogo {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-weight: 800;
+  font-size: 20px;
+  color: #000;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* NAVIGATION */
+.header-nav {
+  margin-left: auto; /* ensures right edge alignment */
+}
+
+.header-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+  color: #d62828;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+  }
+
+  .header-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .logo-text {
+    font-size: 16px;
+  }
+
+  #AgilaLogo {
+    width: 60px;
+  }
+}
+
 
 /* Nav */
 .main-nav a{margin-left:18px;text-decoration:none;color:var(--text);font-weight:600;font-size:14px}
@@ -474,14 +569,13 @@ body{
 
 /* About */
 .about-text{max-width:800px;margin:0 auto;text-align:center;color:#333}
-/* ===== About Section — Belt & Neck Visual ===== */
-/* ===== About Section — Belt & Neck Visual ===== */
+/* ===== About Section — Belt & Neck Visual (Corrected Centering) ===== */
 #about {
   position: relative;
   overflow: hidden;
   text-align: center;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 #about .section-title,
@@ -490,57 +584,59 @@ body{
   z-index: 2;
 }
 
-/* Neck image centered behind the About text */
+/* NECK IMAGE — faint & perfectly centered behind heading */
 .belt-neck {
   position: absolute;
-  top: 20%;               /* adjust this to move up/down */
+  top: 8%; /* 🧩 move closer to top */
   left: 50%;
-  transform: translate(-50%, -20%) scale(1.8); /* Centered + enlarged */
-  opacity: 0.12;          /* faint background */
+  transform: translateX(-50%) scale(1.7); /* remove vertical offset */
+  opacity: 0.1; /* faint background */
   z-index: 0;
-  width: 600px;
+  width: 650px;
   max-width: 90%;
   height: auto;
   pointer-events: none;
   user-select: none;
 }
 
-/* Belt image visible below text */
+/* BELT IMAGE — visible below text */
 .belt-img {
   position: relative;
   display: block;
   margin: 100px auto 0;
-  width: 400px;
+  width: 420px;
   max-width: 95%;
   height: auto;
-  transform: scale(1.4);
+  transform: scale(1.3);
   z-index: 1;
 }
 
 /* Fade-in animation */
 .belt-graphic img {
-  animation: fadeIn 1.5s ease forwards;
+  animation: fadeIn 1.2s ease forwards;
   opacity: 0;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px) scale(1.2); }
+  from { opacity: 0; transform: translateY(15px) scale(1.1); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .belt-neck {
-    transform: translate(-50%, -10%) scale(1.3);
+    top: 12%;
+    transform: translateX(-50%) scale(1.3);
     width: 400px;
-    top: 25%;
   }
+
   .belt-img {
     transform: scale(1.1);
-    width: 280px;
+    width: 300px;
     margin-top: 80px;
   }
 }
+
 
 
 
