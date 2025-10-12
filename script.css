@@ -1,0 +1,28 @@
+/* Replace these URLs with your own images (relative paths or external) */
+:root{
+  --brand:#c8161d;
+  --accent:#c8161d;
+  --muted:#777;
+  --bg:#fff;
+  --text:#222;
+
+  /* change these to use your images */
+  --img-hero: url('dojo.png');
+  --img-hero-figure: url('figure.png');
+  --img-schedule-bg: url('schedule-bg.jpg');
+  --img-instructors-bg: url('instructors-bg.jpg');
+  --img-contact-bg: url('contact-bg.jpg');
+
+  --container-width:1200px;
+  --card-radius:12px;
+  --shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Basic reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale; line-height:1.45;
+}
