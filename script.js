@@ -25,13 +25,6 @@ scheduleBody.innerHTML = scheduleData.map(s => `
     <td>${s.className}</td>
   </tr>
 `).join("");
-/* achievements track animation control */
-  const track = document.querySelector(".achievements-track");
-  // Example: Reverse direction
-  function reverseDirection() {
-    track.style.animationDirection =
-      track.style.animationDirection === "reverse" ? "normal" : "reverse";
-  }
 
 /* contact form handling */
 const form = document.getElementById("contact-form");
@@ -78,3 +71,76 @@ form.addEventListener("submit", (e) => {
     document.documentElement.style.setProperty('--img-contact-bg', `url('${contact.dataset.contactBg}')`);
   }
 })();
+
+// ===== Scrollable Achievements with Dots =====
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.querySelector('.achievements-track');
+  const dotsContainer = document.querySelector('.carousel-dots'); // Corrected selector
+  const btnPrev = document.querySelector('.arrow.left');
+  const btnNext = document.querySelector('.arrow.right');
+
+  if (!track || !btnPrev || !btnNext || !dotsContainer) {
+    console.log('Achievement carousel elements not found.');
+    return;
+  }
+
+  let currentSlide = 0;
+  const cardWidth = 300; // Width of each achievement card
+  const gapWidth = 20; // Gap between cards
+  const cardsPerSlide = 3; // Number of cards per slide
+  const scrollDistance = (cardWidth + gapWidth) * cardsPerSlide;
+
+  const totalCards = track.children.length;
+  const totalSlides = Math.max(0, Math.ceil(totalCards / cardsPerSlide) - 1);
+  const numClickableSlides = Math.max(0, Math.ceil(totalCards / cardsPerSlide) - 2);
+
+  // Create dots
+  for (let i = 0; i <= numClickableSlides; i++) {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    dot.dataset.slide = i;
+    dotsContainer.appendChild(dot);
+  }
+
+  const dots = document.querySelectorAll('.carousel-dots .dot'); // Get dots after creation
+
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentSlide].classList.add('active');
+  }
+
+  updateDots(); // Initialize dots
+
+  btnNext.addEventListener('click', () => {
+    if (currentSlide < totalSlides) {
+      currentSlide++;
+      track.scrollBy({
+        left: scrollDistance,
+        behavior: 'smooth'
+      });
+      updateDots();
+    }
+  });
+
+  btnPrev.addEventListener('click', () => {
+    if (currentSlide > 0) {
+      currentSlide--;
+      track.scrollBy({
+        left: -scrollDistance,
+        behavior: 'smooth'
+      });
+      updateDots();
+    }
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentSlide = index;
+      track.scrollTo({
+        left: scrollDistance * index,
+        behavior: 'smooth'
+      });
+      updateDots();
+    });
+  });
+});
