@@ -522,17 +522,21 @@ body{
 }
 
 
-/* Instructors */
 /* ===== Instructors Section ===== */
 .instructors-section {
   background-color: #000;
   color: #d62828;
   text-align: center;
-  padding: 80px 0;
+  padding: 40px 0;
   background: url("instructor-bg.png") center/cover no-repeat;
-  img:hover { filter: brightness(1.1); }
-  img { transition: filter 0.3s ease; }
-  
+}
+
+.instructors-section img:hover {
+  filter: brightness(1.1);
+}
+
+.instructors-section img {
+  transition: filter 0.3s ease;
 }
 
 .instructors-section .section-title {
@@ -542,14 +546,13 @@ body{
 }
 
 .instructors-section .section-subtitle {
-  color: #1f1f1f;
+  color: #ebebeb;
   margin-bottom: 40px;
   font-weight: 500;
   font-size: 1rem;
 }
 
 .instructors-container {
-  /* use auto-fit so cards wrap and always share available space evenly */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 30px;
@@ -559,83 +562,102 @@ body{
   width: 100%;
 }
 
-/* keep cards flexible but constrained so they size consistently */
-.instructor-card {
-  background: #111;
-  border: 2px solid #222;
-  border-radius: 12px;
-  padding: 20px;
-  width: 100%;
-  max-width: 320px; /* allow slightly wider cards on large screens */
-  box-sizing: border-box;
+/* ===== Instructor Card ===== */
+.instructors-section {
+  background-color: #000;
+  color: #fff;
   text-align: center;
-  overflow: hidden;
-  transition: all 0.35s ease;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  padding: 60px 0;
 }
 
-.instructor-card img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  transition: transform 0.35s ease;
-}
-
-.instructor-card h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.instructor-card p {
-  font-size: 0.9rem;
-  color: #aaa;
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
   margin-bottom: 10px;
 }
 
-.instructor-card .stars {
-  color: #f5b400;
-  font-size: 1.1rem;
+.section-subtitle {
+  color: #aaa;
+  margin-bottom: 40px;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
-.instructor-card .ctct {
-  margin-top: auto;
-  padding: 10px 0;
+.instructors-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.instructor-card {
+  width: 300px;
+  height: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  background: #111;
+  position: relative;
+  cursor: pointer;
+}
+
+.instructor-image {
+  background-color: #111; /* same as card background */
+}
+
+.instructor-image img {
+  width: 100% ;min-width: 300px;
+  height: 100% ;min-height: 350px;
+  object-fit: cover; /* make image fill the container */
+  background-color: #111; /* fill transparent areas */
+
+}
+
+
+/* Info always visible */
+.instructor-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(224, 224, 224, 0.692);
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.instructor-info h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #d62828;
+  margin-bottom: 5px;
+}
+
+.instructor-info p {
+  font-size: 0.9rem;
+  color: #202020;
+  margin-bottom: 10px;
+}
+
+/* Button hidden by default */
+.instructor-info .btn {
+  display: none;
   background: #d62828;
   color: #fff;
+  border: none;
+  padding: 10px 20px;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 5px;
+  cursor: pointer;
   transition: background 0.3s ease;
 }
 
-/* Hover Effect */
-.instructor-card:hover {
-  transform: scale(1.08);
-  border-color: #333333;
-  box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+/* Button appears on hover */
+.instructor-card:hover .btn {
+  display: inline-block;
 }
 
-.instructor-card:hover img {
-  transform: scale(1.1);
-}
-
-/* Responsive Layout */
-@media (max-width: 1024px) {
-  .instructors-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .instructors-container {
-    grid-template-columns: 1fr;
-  }
+.btn:hover {
+  background: #a71c1c;
 }
 
 
