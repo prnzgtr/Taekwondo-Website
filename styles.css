@@ -730,81 +730,6 @@ body{
 
 
 
-/* Achievements */
-.achievements-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* 🔹 exactly 3 per row */
-  gap: 20px;
-  transition: all 0.3s ease;
-  justify-items: center;
-}
-
-.achievement {
-  width: 100%;
-  max-width: 340px;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease;
-}
-
-.achievement img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.ach-caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 6px;
-  padding: 8px 12px;
-  color: #fff;
-  font-weight: 700;
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
-  transition: opacity 0.3s ease;
-}
-
-/* Hover effect (focus on one) */
-.achievements-grid:hover .achievement {
-  opacity: 0.6;
-  transform: scale(0.95);
-}
-
-.achievements-grid .achievement:hover {
-  opacity: 1;
-  transform: scale(1.15);
-  z-index: 5;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-}
-
-.achievements-grid .achievement:hover img {
-  transform: scale(1.05);
-}
-
-.achievements-grid .achievement:hover .ach-caption {
-  opacity: 1;
-}
-
-/* Responsive behavior */
-@media (max-width: 900px) {
-  .achievements-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .achievements-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* About */
 .about-text{max-width:800px;margin:0 auto;text-align:center;color:#333}
 /* ===== About Section — Belt & Neck Visual (Corrected Centering) ===== */
@@ -886,61 +811,10 @@ body{
 .contact-form input, .contact-form textarea{
   padding:10px;border-radius:8px;border:1px solid #ddd;font-size:15px
 }
-/* ===== Achievements Loop Animation (Seamless Infinite) ===== */
-.achievements-loop-section {
-  background-color: #fff;
-  padding: 60px 0;
-  text-align: center;
-  overflow: hidden;
-}
-
-.achievements-loop-section .section-title {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #d62828;
-  margin-bottom: 40px;
-}
-
-.achievements-loop-container {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-
-.achievements-track {
-  display: flex;
-  gap: 40px;
-  width: max-content; /* important for continuous flow */
-  animation: loop-scroll 30s linear infinite;
-}
-
-.achievements-track img {
-  width: 260px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* Pause and zoom on hover */
-.achievements-loop-container:hover .achievements-track {
-  animation-play-state: paused;
-}
 
 .achievements-track img:hover {
   transform: scale(1.08);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* Seamless infinite horizontal scroll */
-@keyframes loop-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 /* Responsive */
