@@ -28,21 +28,23 @@ scheduleBody.innerHTML = scheduleData.map(s => `
 
 /* contact form handling */
 const form = document.getElementById("contact-form");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const message = form.message.value.trim();
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
 
-  if (!name || !email || !message) {
-    alert("Please fill out all fields.");
-    return;
-  }
+    if (!name || !email || !message) {
+      alert("Please fill out all fields.");
+      return;
+    }
 
-  // For demo we just show a friendly confirmation. Replace with AJAX to your backend if needed.
-  alert(`Thanks, ${name}! Your message has been received. We'll reply to ${email} soon.`);
-  form.reset();
-});
+    alert(`Thanks, ${name}! Your message has been received. We'll reply to ${email} soon.`);
+    form.reset();
+  });
+}
+
 
 /* Optional: dynamically set hero figure image if provided as CSS var or HTML image src */
 (function setHeroAssets(){
@@ -75,49 +77,79 @@ form.addEventListener("submit", (e) => {
 // ===== Scrollable Achievements with Dots =====
 document.addEventListener('DOMContentLoaded', function() {
   const track = document.querySelector('.achievements-track');
-  const dotsContainer = document.querySelector('.carousel-dots'); // Corrected selector
+  const dotsContainer = document.querySelector('.carousel-dots');
   const btnPrev = document.querySelector('.arrow.left');
   const btnNext = document.querySelector('.arrow.right');
 
-  if (!track || !btnPrev || !btnNext || !dotsContainer) {
-    console.log('Achievement carousel elements not found.');
-    return;
-  }
+  if (!track || !btnPrev || !btnNext || !dotsContainer) return;
 
   let currentSlide = 0;
-  const cardWidth = 300; // Width of each achievement card
-  const gapWidth = 20; // Gap between cards
-  const cardsPerSlide = 3; // Number of cards per slide
-  const scrollDistance = (cardWidth + gapWidth) * cardsPerSlide;
 
-  const totalCards = track.children.length;
-  const totalSlides = Math.max(0, Math.ceil(totalCards / cardsPerSlide) - 1);
-  const numClickableSlides = Math.max(0, Math.ceil(totalCards / cardsPerSlide) - 2);
-
-  // Create dots
-  for (let i = 0; i <= numClickableSlides; i++) {
-    const dot = document.createElement('span');
-    dot.classList.add('dot');
-    dot.dataset.slide = i;
-    dotsContainer.appendChild(dot);
+  function getCardsPerSlide() {
+    return window.innerWidth <= 768 ? 1 : 3;
   }
 
-  const dots = document.querySelectorAll('.carousel-dots .dot'); // Get dots after creation
+  function getCardWidth() {
+    // Get the first card's width (responsive)
+    const card = track.querySelector('.achievement-card');
+    return card ? card.offsetWidth : 300;
+  }
+
+  function updateCarousel() {
+    // Remove old dots
+    dotsContainer.innerHTML = '';
+    const totalCards = track.children.length;
+    const cardsPerSlide = getCardsPerSlide();
+    const totalSlides = Math.max(1, Math.ceil(totalCards / cardsPerSlide));
+    // Create dots
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('span');
+      dot.classList.add('dot');
+      if (i === currentSlide) dot.classList.add('active');
+      dot.dataset.slide = i;
+      dotsContainer.appendChild(dot);
+    }
+    // Update dot click events
+    const dots = dotsContainer.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+      dot.onclick = () => {
+        currentSlide = index;
+        scrollToSlide();
+        updateDots();
+      };
+    });
+    // Clamp currentSlide if needed
+    if (currentSlide >= totalSlides) {
+      currentSlide = totalSlides - 1;
+      scrollToSlide();
+      updateDots();
+    }
+  }
+
+  function scrollToSlide() {
+    const cardsPerSlide = getCardsPerSlide();
+    const cardWidth = getCardWidth();
+    const gapWidth = 20;
+    const scrollDistance = (cardWidth + gapWidth) * currentSlide * cardsPerSlide;
+    track.scrollTo({
+      left: scrollDistance,
+      behavior: 'smooth'
+    });
+  }
 
   function updateDots() {
+    const dots = dotsContainer.querySelectorAll('.dot');
     dots.forEach(dot => dot.classList.remove('active'));
-    dots[currentSlide].classList.add('active');
+    if (dots[currentSlide]) dots[currentSlide].classList.add('active');
   }
 
-  updateDots(); // Initialize dots
-
   btnNext.addEventListener('click', () => {
-    if (currentSlide < totalSlides) {
+    const totalCards = track.children.length;
+    const cardsPerSlide = getCardsPerSlide();
+    const totalSlides = Math.max(1, Math.ceil(totalCards / cardsPerSlide));
+    if (currentSlide < totalSlides - 1) {
       currentSlide++;
-      track.scrollBy({
-        left: scrollDistance,
-        behavior: 'smooth'
-      });
+      scrollToSlide();
       updateDots();
     }
   });
@@ -125,22 +157,34 @@ document.addEventListener('DOMContentLoaded', function() {
   btnPrev.addEventListener('click', () => {
     if (currentSlide > 0) {
       currentSlide--;
-      track.scrollBy({
-        left: -scrollDistance,
-        behavior: 'smooth'
-      });
+      scrollToSlide();
       updateDots();
     }
   });
 
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      currentSlide = index;
-      track.scrollTo({
-        left: scrollDistance * index,
-        behavior: 'smooth'
-      });
-      updateDots();
-    });
+  // Recalculate on resize
+  window.addEventListener('resize', () => {
+    updateCarousel();
+  });
+
+  // Initial setup
+  updateCarousel();
+});
+
+// ===== MOBILE HAMBURGER MENU =====
+const hamburger = document.querySelector('.hamburger');
+const mobileMenu = document.querySelector('.mobile-menu');
+const menuLinks = document.querySelectorAll('.mobile-menu a');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+});
+
+// Close menu when clicking a link
+menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
   });
 });
