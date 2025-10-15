@@ -200,31 +200,138 @@
         </div>
       </div>
 
-    </div>
+    </div> 
   </section>
-  <!-- ACHIEVEMENTS -->
+
+  <!-- ACHIEVEMENTS SECTION -->
 <section id="achievements" class="achievements-scroll-section">
-  <h2 class="section-title">Achievements</h2>
+  <div class="container">
+    <h2 class="section-title">
+      Our <span class="accent">Achievements</span>
+    </h2>
+    <p class="section-subtitle">
+      Celebrating the champions who brought pride and honor to Agila Taekwondo Academy.
+    </p>
 
-  <div class="achievements-wrapper">
-    <button class="arrow left" aria-label="Previous">&#10094;</button>
+    <div class="achievements-wrapper">
+      <button class="arrow left" aria-label="Previous">&#10094;</button>
 
-    <div class="achievements-track">
-      <div class="achievement-card"><img src="kurt.jpg" alt="Kurt Barbosa"><h3>Kurt Bryan Barbosa</h3><p>Gold - 2023 SEA Games</p></div>
-      <div class="achievement-card"><img src="jessica.jpg" alt="Jessica Canabal"><h3>Baby Jessica Canabal</h3><p>Bronze - 2023 Korea Open</p></div>
-      <div class="achievement-card"><img src="arven.jpg" alt="Arven Alcantara"><h3>Arven Alcantara</h3><p>Gold - 2022 SEA Games</p></div>
-      <div class="achievement-card"><img src="jocel.jpg" alt="Jocel Ninobla"><h3>Jocel Lyn Ninobla</h3><p>Silver - World Poomsae</p></div>
-      <div class="achievement-card"><img src="kirstie.jpg" alt="Kirstie Alora"><h3>Kirstie Elaine Alora</h3><p>Gold - 2019 SEA Games</p></div>
-      <div class="achievement-card"><img src="prince.jpg" alt="Prince Gutierrez"><h3>Prince Gutierrez</h3><p>Bronze - Asian Championships</p></div>
+      <div class="achievements-track">
+        <!-- Achievement Card 1 -->
+        <div class="achievement-card" 
+             data-athlete="Kurt Bryan Barbosa" 
+             data-medal="🥇 Gold Medal" 
+             data-event="2023 SEA Games" 
+             data-category="Men's -58kg" 
+             data-details="Dominated the competition with exceptional speed and technique. Scored 15-7 in the final match, showcasing years of dedication and training from Agila Taekwondo Academy.">
+          <img src="kurt.jpg" alt="Kurt Barbosa">
+          <div class="achievement-info">
+            <h3>Kurt Bryan Barbosa 🥇</h3>
+            <p>Gold - 2023 SEA Games</p>
+          </div>
+        </div>
+
+        <!-- Achievement Card 2 -->
+        <div class="achievement-card" 
+             data-athlete="Baby Jessica Canabal" 
+             data-medal="🥉 Bronze Medal" 
+             data-event="2023 Korea Open" 
+             data-category="Women's -49kg" 
+             data-details="Outstanding performance against top international competitors. Showcased powerful kicks and defensive skills that made the academy proud on the world stage.">
+          <img src="jessica.jpg" alt="Jessica Canabal">
+          <div class="achievement-info">
+            <h3>Baby Jessica Canabal 🥉</h3>
+            <p>Bronze - 2023 Korea Open</p>
+          </div>
+        </div>
+
+        <!-- Achievement Card 3 -->
+        <div class="achievement-card" 
+             data-athlete="Arven Alcantara" 
+             data-medal="🥇 Gold Medal" 
+             data-event="2022 SEA Games" 
+             data-category="Men's -63kg" 
+             data-details="Delivered flawless performances throughout the tournament. Undefeated in all matches with superior technique and unwavering determination.">
+          <img src="arven.jpg" alt="Arven Alcantara">
+          <div class="achievement-info">
+            <h3>Arven Alcantara 🥇</h3>
+            <p>Gold - 2022 SEA Games</p>
+          </div>
+        </div>
+
+        <!-- Achievement Card 4 -->
+        <div class="achievement-card" 
+             data-athlete="Jocel Lyn Ninobla" 
+             data-medal="🥈 Silver Medal" 
+             data-event="World Poomsae Championships" 
+             data-category="Women's Individual Poomsae" 
+             data-details="Demonstrated precision and grace in traditional forms. Scored 8.95 average across all rounds, representing the Philippines with excellence.">
+          <img src="jocel.jpg" alt="Jocel Ninobla">
+          <div class="achievement-info">
+            <h3>Jocel Lyn Ninobla 🥈</h3>
+            <p>Silver - World Poomsae Championships</p>
+          </div>
+        </div>
+
+        <!-- Achievement Card 5 -->
+        <div class="achievement-card" 
+             data-athlete="Kirstie Elaine Alora" 
+             data-medal="🥇 Gold Medal" 
+             data-event="2019 SEA Games" 
+             data-category="Women's -46kg" 
+             data-details="Historic victory with dominant performance. First gold medal for the academy at SEA Games level, inspiring the next generation of champions.">
+          <img src="kirstie.jpg" alt="Kirstie Alora">
+          <div class="achievement-info">
+            <h3>Kirstie Elaine Alora 🥇</h3>
+            <p>Gold - 2019 SEA Games</p>
+          </div>
+        </div>
+
+        <!-- Achievement Card 6 -->
+        <div class="achievement-card" 
+             data-athlete="Prince Gutierrez" 
+             data-medal="🥉 Bronze Medal" 
+             data-event="Asian Championships" 
+             data-category="Men's 63kg" 
+             data-details="Impressive showing against Asia's best fighters. Demonstrated tactical excellence and fighting spirit throughout the tournament.">
+          <img src="prince.jpg" alt="Prince Gutierrez">
+          <div class="achievement-info">
+            <h3>Prince Gutierrez 🥉</h3>
+            <p>Bronze - Asian Championships</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="arrow right" aria-label="Next">&#10095;</button>
     </div>
 
-    <button class="arrow right" aria-label="Next">&#10095;</button>
-  </div>
-
-  <div class="carousel-dots">
-    <span class="dot"></span>
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
   </div>
 </section>
+
+<!-- Achievement Modal -->
+<div id="achievement-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-body">
+      <img id="modal-img" src="" alt="">
+      <div class="modal-info">
+        <h2 id="modal-athlete"></h2>
+        <div class="modal-medal" id="modal-medal"></div>
+        <div class="modal-details">
+          <p><strong>Event:</strong> <span id="modal-event"></span></p>
+          <p><strong>Category:</strong> <span id="modal-category"></span></p>
+          <p class="modal-description" id="modal-details"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- ABOUT US SECTION-->
  <section id="about">
