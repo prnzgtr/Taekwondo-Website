@@ -65,7 +65,7 @@ body{
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 29px;
+  width: 28px;
   height: 20px;
   background: none;
   border: none;
@@ -79,7 +79,7 @@ body{
   display: block;
   width: 100%;
   height: 3px;
-  background: #000000;
+  background: #d62828;
   border-radius: 3px;
   transition: all 0.4s ease;
 }
@@ -98,32 +98,26 @@ body{
 .mobile-menu {
   position: fixed;
   top: 0;
-  left: 0; /* start aligned to the left edge */
-  width: 60%; /* or whatever width fits your design */
+  left: 0;
+  width: 50%;
   height: 100vh;
   background: linear-gradient(160deg, #b91d1d, #111);
-  transform: translateX(190%); /* hidden offscreen to the right */
+  transform: translateY(-100%);
   transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   z-index: 90;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
-/* When menu is active (slides in) */
 .mobile-menu.active {
-  transform: translateX(100%); /* slides into view */
-}
-
-.mobile-menu li {
-  margin: 18px 0;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.4s ease;
+  transform: translateY(0);
 }
 
 .mobile-menu ul {
   list-style: none;
-  text-align: left;
+  padding: 0;
+  text-align: center;
 }
 
 .mobile-menu li {
@@ -147,7 +141,7 @@ body{
 }
 
 .mobile-menu a:hover {
-  color: #000000;
+  color: #ffb703;
 }
 
 /* Show hamburger only on mobile */
@@ -158,17 +152,6 @@ body{
   .hamburger {
     display: flex;
   }
-  .hamburger.active span {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: #ffffff;
-  border-radius: 3px;
-  transition: all 0.4s ease;
-}
-/* .hamburger.active span:hover {
-  color: #000000;
-} */
 }
 
 /* Remove container centering if inherited */
@@ -255,129 +238,329 @@ body{
 .main-nav a{margin-left:18px;text-decoration:none;color:var(--text);font-weight:600;font-size:14px}
 .main-nav a:hover{color:var(--accent)}
 
-/* ===== Achievements Section (Scrollable) ===== */
-.achievements-scroll-section {
-  background: #fff;
-  padding: 80px 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden; /* Hide scrollbar */
-}
+/* ===== Achievements Section ===== */
+    .achievements-scroll-section {
+      background: linear-gradient(to bottom, #fff, #f7f7f7);
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-.achievements-scroll-section .section-title {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #d62828;
-  margin-bottom: 30px;
-}
+    .achievements-scroll-section .section-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #d62828;
+      margin-bottom: 10px;
+      position: relative;
+    }
 
-.achievements-wrapper {
-  display: flex;
-  flex-direction: column; /* Stack track and dots */
-  align-items: center;
-  position: relative;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+    .accent {
+      color: #d62828;
+    }
 
-.achievements-track {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom:40px; /* prevent content cut off */
-  padding-top: 30px;
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-}
+    .section-subtitle {
+      font-size: 1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.achievements-track::-webkit-scrollbar {
-  display: none;
-}
+    .achievements-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
-.achievement-card {
-  flex: 0 0 calc(33.33% - 13.33px); /* Adjusted width for 3 cards per slide */
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-  text-align: center;
-  scroll-snap-align: start;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .achievements-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 40px 10px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      width: 100%;
+    }
 
-.achievement-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-}
+    .achievements-track::-webkit-scrollbar {
+      display: none;
+    }
 
-.achievement-card:hover {
-  transform: scale(1.07);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-}
+    .achievement-card {
+      flex: 0 0 calc(33.33% - 16px);
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      text-align: center;
+      scroll-snap-align: start;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      animation: fadeInUp 0.8s ease forwards;
+      cursor: pointer;
+    }
 
-/* Arrows */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #d62828;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  z-index: 10;
-  font-size: 1.4rem;
-  transition: background 0.3s ease;
-}
+    .achievement-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      filter: grayscale(90%);
+      transition: all 0.4s ease;
+    }
 
-.arrow:hover {
-  background: #b31f1f;
-}
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
 
-.arrow.left {
-  left: 10px;
-}
+    .achievement-card:hover img {
+      filter: grayscale(0);
+      transform: scale(1.05);
+    }
 
-.arrow.right {
-  right: 10px;
-}
+    .achievement-info {
+      padding: 20px;
+    }
 
-/* Carousel Dots */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
+    .achievement-info h3 {
+      color: #111;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
 
-.dot {
-  width: 12px;
-  height: 12px;
-  background-color: #bbb;
-  border-radius: 50%;
-  margin: 0 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+    .achievement-info p {
+      color: #777;
+      font-size: 0.95rem;
+    }
 
-.dot.active {
-  background-color: #d62828;
-}
+    /* === Arrows === */
+    .arrow {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      background: #d62828;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
 
+    .arrow:hover {
+      background: #b31f1f;
+      transform: translateY(-50%) scale(1.1);
+    }
 
-/* Mobile tweak - disable hover scaling for touch screens */
-@media (hover: none) {
-  .achievements-grid:hover .achievement,
-  .achievements-grid .achievement:hover {
-    transform: none;
-    opacity: 1;
-  }
-}
+    .arrow.left { 
+      left: 25px; 
+    }
+    
+    .arrow.right { 
+      right: 25px; 
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background-color: #bbb;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active, .dot:hover {
+      background-color: #d62828;
+      transform: scale(1.2);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== Achievement Modal ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      position: relative;
+      background: #fff;
+      border-radius: 20px;
+      max-width: 900px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: zoomIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 21px;
+    right: 36px;
+      font-size: 35px;
+      font-weight: bold;
+      color: #ffffff;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.2s ease;
+    }
+
+    .close-modal:hover {
+      transform: rotate(90deg) scale(1.2);
+      color: #b31f1f;
+    }
+
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+    }
+
+    .modal-body img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 25px;
+    }
+
+    .modal-info {
+      text-align: left;
+    }
+
+    .modal-info h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 15px;
+    }
+
+    .modal-medal {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #d62828;
+      margin-bottom: 20px;
+    }
+
+    .modal-details {
+      background: #f8f8f8;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #d62828;
+    }
+
+    .modal-details p {
+      margin: 10px 0;
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .modal-details strong {
+      color: #d62828;
+      font-weight: 600;
+    }
+
+    .modal-description {
+      margin-top: 15px;
+      font-style: italic;
+      color: #555;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .achievement-card {
+        flex: 0 0 80%;
+      }
+
+      .arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        width: 95%;
+        max-height: 95vh;
+      }
+
+      .modal-body {
+        padding: 20px;
+      }
+
+      .modal-info h2 {
+        font-size: 1.5rem;
+      }
+
+      .modal-medal {
+        font-size: 1.4rem;
+      }
+
+      .modal-body img {
+        max-height: 300px;
+      }
+
+      .achievements-scroll-section .section-title {
+        font-size: 1.8rem;
+      }
+    }
 
 /* Hero */
 /* ===== Hero Section (Responsive) ===== */
@@ -397,9 +580,7 @@ body{
   max-width: 550px;
   z-index: 2;
   color: #fff;
-  margin-left: 2vh;
 }
-
 
 .hero-content h1 {
   font-size: 2.8rem;
@@ -587,7 +768,6 @@ body{
 }
 
 /* === Schedule Section (No Overflow) === */
-/* === Schedule Section (No Overflow) === */
 .schedule {
   width: 100vw;
   position: relative;
@@ -595,6 +775,10 @@ body{
   background-position: center;
   padding: 60px 0;
   overflow-x: hidden;
+}
+.schedule p {
+  font-size: 1rem;
+  color: #818181;
 }
 
 /* Responsive styles for schedule table */
@@ -612,6 +796,10 @@ body{
     min-width: 260px;
     font-size: 13px;
   }
+  .schedule p {
+  font-size: 0.8rem;
+  
+}
 }
 
 /* Tablet and Desktop */
@@ -736,7 +924,7 @@ body{
 .ribbon {
   position: absolute;
   top: 24px;
-  right: -41px; 
+  right: -41px;
   background: #c00;
   color: #fff;
   padding: 6px 40px;
@@ -796,7 +984,6 @@ body{
         font-size: 0.7rem;
   }
 }
-
 
 
 /* ===== Instructors Section ===== */
@@ -950,6 +1137,7 @@ body{
   padding-top: 120px;
   padding-bottom: 120px;
 }
+
 #about .section-title {
   font-size: 2.4rem;
   margin-bottom: 20px;
@@ -966,6 +1154,7 @@ body{
   color: #c8161d;
   text-decoration: underline;
 }
+
 
 /* NECK IMAGE — faint & perfectly centered behind heading */
 .belt-neck {
@@ -1020,35 +1209,7 @@ body{
   }
 }
 
-
-
-
-
-
-
-@media (max-width: 768px) {
-  .achievement-card {
-    flex: 0 0 100%;
-    max-width: 100%;
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    scroll-snap-align: start;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 0;
-    height: auto;
-    display: block;
-  }
-  .achievement-card img {
-    width: 100%;
-    height: 220px;         /* taller for better visibility */
-    object-fit: contain;   /* show full image, may add letterboxing */
-    background: #fff;      /* optional: white background for letterbox */
-    display: block;
-  }
-}/* CONTACT AND FOOTER */
+/* CONTACT AND FOOTER */
 .footer {
   background-color: #111;
   color: #fff;
@@ -1192,12 +1353,3 @@ body{
     align-items: center;
   }
 }
-
-/* Responsive tweaks */
-@media (max-width:900px){
-  .hero h1{font-size:34px}
-  .hero-figure{width:220px;right:8px}
-  .instructor-row{justify-content:space-around}
-  .main-nav{display:none}
-}
-  
