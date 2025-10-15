@@ -28,23 +28,21 @@ scheduleBody.innerHTML = scheduleData.map(s => `
 
 /* contact form handling */
 const form = document.getElementById("contact-form");
-if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const message = form.message.value.trim();
 
-    if (!name || !email || !message) {
-      alert("Please fill out all fields.");
-      return;
-    }
+  if (!name || !email || !message) {
+    alert("Please fill out all fields.");
+    return;
+  }
 
-    alert(`Thanks, ${name}! Your message has been received. We'll reply to ${email} soon.`);
-    form.reset();
-  });
-}
-
+  // For demo we just show a friendly confirmation. Replace with AJAX to your backend if needed.
+  alert(`Thanks, ${name}! Your message has been received. We'll reply to ${email} soon.`);
+  form.reset();
+});
 
 /* Optional: dynamically set hero figure image if provided as CSS var or HTML image src */
 (function setHeroAssets(){
@@ -90,18 +88,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function getCardWidth() {
-    // Get the first card's width (responsive)
     const card = track.querySelector('.achievement-card');
     return card ? card.offsetWidth : 300;
   }
 
   function updateCarousel() {
-    // Remove old dots
     dotsContainer.innerHTML = '';
     const totalCards = track.children.length;
     const cardsPerSlide = getCardsPerSlide();
     const totalSlides = Math.max(1, Math.ceil(totalCards / cardsPerSlide));
-    // Create dots
+    
     for (let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('span');
       dot.classList.add('dot');
@@ -109,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
       dot.dataset.slide = i;
       dotsContainer.appendChild(dot);
     }
-    // Update dot click events
+    
     const dots = dotsContainer.querySelectorAll('.dot');
     dots.forEach((dot, index) => {
       dot.onclick = () => {
@@ -118,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateDots();
       };
     });
-    // Clamp currentSlide if needed
+    
     if (currentSlide >= totalSlides) {
       currentSlide = totalSlides - 1;
       scrollToSlide();
@@ -129,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function scrollToSlide() {
     const cardsPerSlide = getCardsPerSlide();
     const cardWidth = getCardWidth();
-    const gapWidth = 20;
+    const gapWidth = 24;
     const scrollDistance = (cardWidth + gapWidth) * currentSlide * cardsPerSlide;
     track.scrollTo({
       left: scrollDistance,
@@ -162,12 +158,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Recalculate on resize
   window.addEventListener('resize', () => {
     updateCarousel();
   });
 
-  // Initial setup
   updateCarousel();
 });
 
@@ -187,4 +181,60 @@ menuLinks.forEach(link => {
     hamburger.classList.remove('active');
     mobileMenu.classList.remove('active');
   });
+});
+
+// ===== ACHIEVEMENT MODAL =====
+const modal = document.getElementById('achievement-modal');
+const modalImg = document.getElementById('modal-img');
+const modalAthlete = document.getElementById('modal-athlete');
+const modalMedal = document.getElementById('modal-medal');
+const modalEvent = document.getElementById('modal-event');
+const modalCategory = document.getElementById('modal-category');
+const modalDetails = document.getElementById('modal-details');
+const closeModal = document.querySelector('.close-modal');
+
+// Add click event to all achievement cards
+document.querySelectorAll('.achievement-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const athlete = card.dataset.athlete;
+    const medal = card.dataset.medal;
+    const event = card.dataset.event;
+    const category = card.dataset.category;
+    const details = card.dataset.details;
+    const imgSrc = card.querySelector('img').src;
+
+    // Populate modal
+    modalImg.src = imgSrc;
+    modalAthlete.textContent = athlete;
+    modalMedal.textContent = medal;
+    modalEvent.textContent = event;
+    modalCategory.textContent = category;
+    modalDetails.textContent = details;
+
+    // Show modal
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+// Close modal when clicking X
+closeModal.addEventListener('click', () => {
+  modal.classList.remove('show');
+  document.body.style.overflow = '';
+});
+
+// Close modal when clicking outside
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+});
+
+// Close modal with ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.classList.contains('show')) {
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
 });
