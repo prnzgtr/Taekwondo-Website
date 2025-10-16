@@ -10,7 +10,13 @@ body{
 
 html, body {
   height: 100%;
-  overflow: hidden; /* disables scrolling */
+  overflow-x: hidden; /* disables horizontal scrolling */
+}
+@media screen and (min-width: 769px) {
+  body {
+    overflow: hidden; /* ensures no horizontal scroll on desktop */
+  }
+  
 }
 /* Remove hyperlink color and underline for all links */
 
@@ -394,3 +400,4 @@ span.logo-text {
     margin-top: 20px;
   }
 }
+
