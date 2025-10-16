@@ -13,7 +13,7 @@
   --text:#222;
 
   /* change these to use your images */
-  --img-hero: url('k-tigers-640x400.jpg');
+  --img-hero: url('dojo.png');
   --img-hero-figure: url('figure.png');
   --img-schedule-bg: url('schedule-bg.png');
   --img-instructors-bg: url('instructors-bg.png');
@@ -43,11 +43,30 @@ body{
 /* ===== Header Layout ===== */
 .site-header {
   position: sticky;
-  top: 0;
   background: #fff;
   border-bottom: 1px solid #eee;
-  z-index: 60;
   width: 100%;
+  transition: top 0.3s;
+  top: 0;
+  z-index: 100;
+}
+.site-header.hide-on-scroll {
+  top: -200px; /* or -your-header-height */
+}
+/* Remove hyperlink color and underline for all links */
+a, a:visited, a:active {
+  color: #111;
+  text-decoration: none;
+}
+
+/* Make .logo-text (Agila Taekwondo) look like default black text */
+.logo-text,
+span.logo-text {
+    font-weight: 800;
+    font-size: 20px;
+    color: #000;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* FLEX container without centered constraints */
@@ -65,7 +84,7 @@ body{
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 28px;
+  width: 29px;
   height: 20px;
   background: none;
   border: none;
@@ -79,7 +98,7 @@ body{
   display: block;
   width: 100%;
   height: 3px;
-  background: #d62828;
+  background: #000000;
   border-radius: 3px;
   transition: all 0.4s ease;
 }
@@ -94,31 +113,36 @@ body{
   transform: translateY(-8px) rotate(-45deg);
 }
 
-
 /* Mobile menu overlay */
 .mobile-menu {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 50%;
+  left: 0; /* start aligned to the left edge */
+  width: 55%; /* or whatever width fits your design */
   height: 100vh;
   background: linear-gradient(160deg, #b91d1d, #111);
-  transform: translateY(-100%);
+  transform: translateX(190%); /* hidden offscreen to the right */
   transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   z-index: 90;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
 }
 
+/* When menu is active (slides in) */
 .mobile-menu.active {
-  transform: translateY(0);
+  transform: translateX(100%); /* slides into view */
+}
+
+.mobile-menu li {
+  margin: 18px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.4s ease;
 }
 
 .mobile-menu ul {
   list-style: none;
-  padding: 0;
-  text-align: center;
+  text-align: left;
 }
 
 .mobile-menu li {
@@ -142,7 +166,7 @@ body{
 }
 
 .mobile-menu a:hover {
-  color: #ffb703;
+  color: #000000;
 }
 
 /* Show hamburger only on mobile */
@@ -153,6 +177,17 @@ body{
   .hamburger {
     display: flex;
   }
+  .hamburger.active span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 3px;
+  transition: all 0.4s ease;
+}
+/* .hamburger.active span:hover {
+  color: #000000;
+} */
 }
 
 /* Remove container centering if inherited */
@@ -562,7 +597,6 @@ body{
         font-size: 1.8rem;
       }
     }
-
 /* Hero */
 /* ===== Hero Section (Responsive) ===== */
 #hero {
@@ -571,7 +605,7 @@ body{
   align-items: center;
   justify-content: space-between;
   padding: 100px 8%;
-  background: url("k-tigers-640x400.jpg") center/cover no-repeat;
+  background: url("dojo.png") center/cover no-repeat;
   min-height: 100vh;
   position: relative;
 }
@@ -581,7 +615,9 @@ body{
   max-width: 550px;
   z-index: 2;
   color: #fff;
+  margin-left: 2vh;
 }
+
 
 .hero-content h1 {
   font-size: 2.8rem;
@@ -769,6 +805,7 @@ body{
 }
 
 /* === Schedule Section (No Overflow) === */
+/* === Schedule Section (No Overflow) === */
 .schedule {
   width: 100vw;
   position: relative;
@@ -776,10 +813,6 @@ body{
   background-position: center;
   padding: 60px 0;
   overflow-x: hidden;
-}
-.schedule p {
-  font-size: 1rem;
-  color: #818181;
 }
 
 /* Responsive styles for schedule table */
@@ -797,10 +830,6 @@ body{
     min-width: 260px;
     font-size: 13px;
   }
-  .schedule p {
-  font-size: 0.8rem;
-  
-}
 }
 
 /* Tablet and Desktop */
@@ -925,7 +954,7 @@ body{
 .ribbon {
   position: absolute;
   top: 24px;
-  right: -41px;
+  right: -41px; 
   background: #c00;
   color: #fff;
   padding: 6px 40px;
@@ -985,6 +1014,7 @@ body{
         font-size: 0.7rem;
   }
 }
+
 
 
 /* ===== Instructors Section ===== */
@@ -1138,7 +1168,6 @@ body{
   padding-top: 120px;
   padding-bottom: 120px;
 }
-
 #about .section-title {
   font-size: 2.4rem;
   margin-bottom: 20px;
@@ -1155,7 +1184,6 @@ body{
   color: #c8161d;
   text-decoration: underline;
 }
-
 
 /* NECK IMAGE — faint & perfectly centered behind heading */
 .belt-neck {
@@ -1210,7 +1238,35 @@ body{
   }
 }
 
-/* CONTACT AND FOOTER */
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .achievement-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    scroll-snap-align: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 0;
+    height: auto;
+    display: block;
+  }
+  .achievement-card img {
+    width: 100%;
+    height: 220px;         /* taller for better visibility */
+    object-fit: contain;   /* show full image, may add letterboxing */
+    background: #fff;      /* optional: white background for letterbox */
+    display: block;
+  }
+}/* CONTACT AND FOOTER */
 .footer {
   background-color: #111;
   color: #fff;
@@ -1354,3 +1410,12 @@ body{
     align-items: center;
   }
 }
+
+/* Responsive tweaks */
+@media (max-width:900px){
+  .hero h1{font-size:34px}
+  .hero-figure{width:220px;right:8px}
+  .instructor-row{justify-content:space-around}
+  .main-nav{display:none}
+}
+  
