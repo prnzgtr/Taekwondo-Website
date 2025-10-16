@@ -6,28 +6,46 @@
   <title>Samuel Morrison | Agila Taekwondo Academy</title>
   <link rel="stylesheet" href="samuel.css" />
 </head>
-<body>
-  <!-- Navbar -->
+<body>  <!-- Navbar -->
   <header class="site-header">
   <div class="header-inner">
-    <a href="index.html" class="logo">
-      <img id="AgilaLogo" src="logo.png" alt="Agila Taekwondo Logo">
-      <span class="logo-text">AGILA TAEKWONDO</span>
-    </a>
+    <div class="logo">
+      <a href="index.html"><img id="AgilaLogo" src="logo.png" alt="Agila Taekwondo"></a>
+      <span class="logo-text"><a href="index.html">Agila Taekwondo</a></span>
+    </div>
 
-    <nav class="header-nav">
+    <!-- Desktop Navigation -->
+    <nav class="header-nav desktop-nav">
       <ul>
-         <li><a href="index.html#programs">Programs</a></li>
-          <li><a href="index.html#schedule">Schedule</a></li>
-          <li><a href="index.html#membership">Membership</a></li>
-          <li><a href="index.html#instructors">Instructors</a></li>
-          <li><a href="index.html#achievements">Achievements</a></li>
-          <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#programs">Programs</a></li>
+        <li><a href="index.html#schedule">Schedule</a></li>
+        <li><a href="index.html#membership">Membership</a></li>
+        <li><a href="index.html#instructors">Instructors</a></li>
+        <li><a href="index.html#achievements">Achievements</a></li>
+        <li><a href="index.html#about">About</a></li>
       </ul>
     </nav>
-  </div>
-</header>
 
+    <!-- Hamburger Button -->
+    <button class="hamburger" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu">
+    <ul>
+        <li><a href="index.html#programs">Programs</a></li>
+        <li><a href="index.html#schedule">Schedule</a></li>
+        <li><a href="index.html#membership">Membership</a></li>
+        <li><a href="index.html#instructors">Instructors</a></li>
+        <li><a href="index.html#achievements">Achievements</a></li>
+        <li><a href="index.html#about">About</a></li>
+    </ul>
+  </nav>
+</header>
   <!-- Achievements Section -->
   <section class="achievements-section">
     <div class="overlay"></div>
@@ -54,6 +72,41 @@
       <img src="samuel.png" alt="Samuel Morrison">
     </div>
   </section>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Optional: close menu when a link is clicked
+    mobileMenu.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      }
+    });
+  }
+});
+let lastScrollY = window.scrollY;
+const header = document.querySelector('.site-header');
+
+window.addEventListener('scroll', () => {
+  if (!header) return;
+  if (window.scrollY > lastScrollY && window.scrollY > 80) {
+    // Scrolling down
+    header.classList.add('hide-on-scroll');
+  } else {
+    // Scrolling up
+    header.classList.remove('hide-on-scroll');
+  }
+  lastScrollY = window.scrollY;
+});
+</script>
 </body>
 </html>
 
