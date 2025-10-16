@@ -3,19 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Achievements | Agila Taekwondo Academy</title>
-  <link rel="stylesheet" href="rodolfo.css" />
+  <title>Keyence Natividad | Agila Taekwondo Academy</title>
+  <link rel="stylesheet" href="keyence.css" />
 </head>
-<body>
-  <!-- Navbar -->
-  <header class="site-header">
+<body>  <!-- Loading Screen -->
+<div class="loading-screen">
+  <div class="loader"></div>
+  <div class="loading-text">AGILA</div>
+</div>
+
+  <!-- Header -->
+
+<header class="site-header">
   <div class="header-inner">
     <div class="logo">
-      <a href="index.html"><img id="AgilaLogo" src="logo.png" alt="Agila Taekwondo"></a>
-      <span class="logo-text"><a href="index.html">Agila Taekwondo</a></span>
+      <a href="index.html"><img src="whiteLogo.png" alt="Agila Taekwondo" class="logo-img" /></a>
+      <a href="index.html"><span class="logo-text">Agila Taekwondo</span></a>
     </div>
 
-    <!-- Desktop Navigation -->
     <nav class="header-nav desktop-nav">
       <ul>
         <li><a href="index.html#programs">Programs</a></li>
@@ -27,7 +32,6 @@
       </ul>
     </nav>
 
-    <!-- Hamburger Button -->
     <button class="hamburger" aria-label="Toggle Menu">
       <span></span>
       <span></span>
@@ -35,19 +39,17 @@
     </button>
   </div>
 
-  <!-- Mobile Menu -->
   <nav class="mobile-menu">
     <ul>
-        <li><a href="index.html#programs">Programs</a></li>
-        <li><a href="index.html#schedule">Schedule</a></li>
-        <li><a href="index.html#membership">Membership</a></li>
-        <li><a href="index.html#instructors">Instructors</a></li>
-        <li><a href="index.html#achievements">Achievements</a></li>
-        <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#programs">Programs</a></li>
+      <li><a href="index.html#schedule">Schedule</a></li>
+      <li><a href="index.html#membership">Membership</a></li>
+      <li><a href="index.html#instructors">Instructors</a></li>
+      <li><a href="index.html#achievements">Achievements</a></li>
+      <li><a href="index.html#about">About</a></li>
     </ul>
   </nav>
 </header>
-
   <!-- Achievements Section -->
   <section class="achievements-section">
     <div class="overlay"></div>
@@ -69,7 +71,13 @@
       <img src="rodolfo.png" alt="Rodolfo Reyes Jr">
     </div>
   </section>
-  <script>
+   <script>
+    // Loading Screen
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelector('.loading-screen').classList.add('hidden');
+  }, 1500);
+});
 document.addEventListener('DOMContentLoaded', function() {
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
@@ -106,3 +114,4 @@ window.addEventListener('scroll', () => {
 </script>
 </body>
 </html>
+
