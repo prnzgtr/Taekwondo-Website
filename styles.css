@@ -17,7 +17,7 @@
   --shadow: 0 6px 18px rgba(0,0,0,0.12);
     /*images */
   --img-hero: url('dojo.png');
-  --img-hero-bg: url('k-tigers-640x400.jpg');
+  --img-hero-bg: url('landing.jpg');
   --img-schedule-bg: url('schedule-bg.png');
   --img-instructors-bg: url('instructors-bg.png');
   --img-contact-bg: url('contact-bg.png');
@@ -32,7 +32,13 @@ body{
   -moz-osx-font-smoothing:grayscale;line-height:1.45;
 }
 .container{max-width:var(--container-width);margin:0 auto;padding:0 20px}
-
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
 /* Loading Screen */
 .loading-screen {
   position: fixed;
@@ -646,8 +652,8 @@ cubic-bezier(0.77, 0, 0.175, 1);
 
 .ribbon {
   position: absolute;
-  top: -6px;
-  right: -127px;
+  right: -44%;
+  top: -1%;
   background: linear-gradient(135deg, #c8161d, #330303, #a71414, #ff0000);
   background-size: 300% 300%;
   color: #fff;
@@ -1297,13 +1303,6 @@ cubic-bezier(0.77, 0, 0.175, 1);
     border-radius: 3px;
     transition: all 0.4s ease;
 }
-  .ribbon{
-    right: -260px;
-    top: 1px;
-    padding: 8px 40px;
-    font-size: 0.9rem;
-  }
-
   .header-inner {
     padding: 10px 20px;
   }
@@ -1339,14 +1338,22 @@ cubic-bezier(0.77, 0, 0.175, 1);
   .membership-grid {
     grid-template-columns: 1fr;
   }
+
+  .ribbon{
+        right: -44%;
+        top: -1%;
+    padding: 8px 40px;
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 600px) {
-  .ribbon{
-    right: -100px;
-    padding: 6px 30px;
-    font-size: 0.75rem;
-  }
+    .ribbon {
+        right: -44%;
+        top: -1%;
+        padding: 6px 30px;
+        font-size: 0.75rem;
+    }
   .hero-content{
     margin-top: 120px;
   }
@@ -1402,6 +1409,12 @@ cubic-bezier(0.77, 0, 0.175, 1);
   }
 }
 @media (min-width: 1024px) {
+      .ribbon {
+        right: -44%;
+        top: -1%;
+        padding: 6px 30px;
+        font-size: 0.75rem;
+    }
   .hero-content h1 {
     font-size: 7rem;
   }
