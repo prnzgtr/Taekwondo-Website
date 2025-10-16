@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keyence Natividad | Agila Taekwondo Academy</title>
+  <link rel="stylesheet" href="keyence.css" />
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen">
+    <div class="loader"></div>
+    <div class="loading-text">AGILA</div>
+  </div>
+
+  <!-- Global Header / Navigation -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="index.html">
+          <img src="whiteLogo.png" alt="Agila Taekwondo" class="logo-img" />
+        </a>
+        <a href="index.html"><span class="logo-text">Agila Taekwondo</span></a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="header-nav desktop-nav">
+        <ul>
+          <li><a href="index.html#programs">Programs</a></li>
+          <li><a href="index.html#schedule">Schedule</a></li>
+          <li><a href="index.html#membership">Membership</a></li>
+          <li><a href="index.html#instructors">Instructors</a></li>
+          <li><a href="index.html#achievements">Achievements</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hamburger Icon -->
+      <button class="hamburger" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+      <ul>
+        <li><a href="index.html#programs">Programs</a></li>
+        <li><a href="index.html#schedule">Schedule</a></li>
+        <li><a href="index.html#membership">Membership</a></li>
+        <li><a href="index.html#instructors">Instructors</a></li>
+        <li><a href="index.html#achievements">Achievements</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <img src="keyence-bg.png" alt="Keyence Natividad" class="hero-image" />
+    <div class="hero-content">
+      <h1>Keyence Natividad</h1>
+      <p class="hero-subtitle">Elite Taekwondo Athlete</p>
+      <p class="hero-title">Black Belt • National Competitor</p>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Years Training</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">Multiple</div>
+        <div class="stat-label">Competitions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Dedication</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="achievements-section">
+    <div class="section-header">
+      <h2 class="section-title">Journey & Achievements</h2>
+      <p class="section-subtitle">Dedication and excellence in Taekwondo</p>
+    </div>
+
+    <div class="achievements-grid">
+      <div class="achievement-item">
+        <div class="achievement-header">
+          <span class="medal-icon">🏆</span>
+          <span class="achievement-year">Ongoing</span>
+          <span class="achievement-medal">Competitor</span>
+        </div>
+        <h3 class="achievement-event">Active Competition Career</h3>
+        <p class="achievement-description">Regularly competing in local and regional Taekwondo tournaments, continuously pushing boundaries and representing Agila Taekwondo Academy with pride and skill.</p>
+        <span class="achievement-category">Tournament Participation</span>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-header">
+          <span class="medal-icon">⭐</span>
+          <span class="achievement-year">Ongoing</span>
+          <span class="achievement-medal">Instructor</span>
+        </div>
+        <h3 class="achievement-event">Teaching & Mentorship</h3>
+        <p class="achievement-description">Sharing knowledge and passion for Taekwondo with students at Agila Academy, helping develop the next generation of martial artists through expert instruction and guidance.</p>
+        <span class="achievement-category">Education & Training</span>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-header">
+          <span class="medal-icon">💪</span>
+          <span class="achievement-year">Daily</span>
+          <span class="achievement-medal silver">Training</span>
+        </div>
+        <h3 class="achievement-event">Continuous Development</h3>
+        <p class="achievement-description">Committed to daily training and personal growth, constantly refining techniques, improving physical conditioning, and deepening understanding of Taekwondo principles.</p>
+        <span class="achievement-category">Personal Excellence</span>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-header">
+          <span class="medal-icon">🎯</span>
+          <span class="achievement-year">Future</span>
+          <span class="achievement-medal silver">Goals</span>
+        </div>
+        <h3 class="achievement-event">Aspiring Champion</h3>
+        <p class="achievement-description">Setting sights on higher ranks and major tournament victories, working tirelessly towards national and international recognition in the Taekwondo community.</p>
+        <span class="achievement-category">Future Aspirations</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back Button -->
+  <a href="index.html#instructors" class="back-button">←</a>
+
+  <!-- Script -->
+  <script>
+    // Loading Screen
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.loading-screen').classList.add('hidden');
+      }, 1500);
+    });
+
+    // Header Shadow on Scroll
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuLinks = document.querySelectorAll('.mobile-menu a');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+
+    // Animate Stats on Scroll
+    const statCards = document.querySelectorAll('.stat-card');
+    const observerOptions = { threshold: 0.2 };
+
+    const statObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+        }
+      });
+    }, observerOptions);
+
+    statCards.forEach(card => {
+      card.style.opacity = '0';
+      statObserver.observe(card);
+    });
+  </script>
+</body>
+</html>
