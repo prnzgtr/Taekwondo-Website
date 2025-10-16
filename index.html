@@ -1,21 +1,30 @@
-<!doctype html>
+<!--Enhanced Version-->
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Agila Taekwondo Academy</title>
   <link rel="stylesheet" href="styles.css" />
-</head>
+  </head>
 <body>
+
+<!-- Loading Screen -->
+<div class="loading-screen">
+  <div class="loader"></div>
+  <div class="loading-text">AGILA</div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" aria-label="Back to top">↑</button>
 
 <header class="site-header">
   <div class="header-inner">
     <div class="logo">
-      <a href="index.html"><img id="AgilaLogo" src="logo.png" alt="Agila Taekwondo"></a>
-      <a href="index.html"><span class="logo-text">Agila Taekwondo</span></a>
+      <img src="whiteLogo.png" alt="Agila Taekwondo" class="logo-img" />
+      <span class="logo-text">Agila Taekwondo</span>
     </div>
 
-    <!-- Desktop Navigation -->
     <nav class="header-nav desktop-nav">
       <ul>
         <li><a href="#programs">Programs</a></li>
@@ -27,7 +36,6 @@
       </ul>
     </nav>
 
-    <!-- Hamburger Button -->
     <button class="hamburger" aria-label="Toggle Menu">
       <span></span>
       <span></span>
@@ -35,24 +43,18 @@
     </button>
   </div>
 
-  <!-- Mobile Menu -->
   <nav class="mobile-menu">
     <ul>
-        <li><a href="#programs">Programs</a></li>
-        <li><a href="#schedule">Schedule</a></li>
-        <li><a href="#membership">Membership</a></li>
-        <li><a href="#instructors">Instructors</a></li>
-        <li><a href="#achievements">Achievements</a></li>
-        <li><a href="#about">About</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#membership">Membership</a></li>
+      <li><a href="#instructors">Instructors</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#about">About</a></li>
     </ul>
   </nav>
 </header>
 
-
-
-
-
-  <!-- HERO -->
 <section id="hero">
   <div class="hero-content">
     <h1>Unleash Your Power with Taekwondo</h1>
@@ -62,69 +64,68 @@
       <a href="#programs" class="btn btn-secondary">View Programs</a>
     </div>
   </div>
-  <div class="hero-image">
-    <img src="figure.png" alt="Taekwondo fighter">
+  <div class="hero-badge">
+    
+    <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="150" cy="150" r="140" fill="url(#grad1)" opacity="0.3"/>
+      <defs>
+        <radialGradient id="grad1">
+          <stop offset="0%" style="stop-color:#c8161d;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#ff4444;stop-opacity:0" />
+        </radialGradient>
+      </defs>
+    </svg>
   </div>
 </section>
 
+<section id="programs" class="section programs container">
+  <h2 class="section-title">Our <span class="accent">Programs</span></h2>
+  <div class="program-grid">
+    <article class="card">
+      <h3>Kids Taekwondo</h3>
+      <p>Age-appropriate classes (4–12 years). Focus on discipline, respect, and basics.</p>
+    </article>
+    <article class="card">
+      <h3>Teens & Adults</h3>
+      <p>Classes for ages 13+. Self-defense, training and rank progression.</p>
+    </article>
+    <article class="card">
+      <h3>Intermediate & Advanced</h3>
+      <p>Higher-level training: sparring, forms, and competition prep.</p>
+    </article>
+    <article class="card">
+      <h3>Beginner Program</h3>
+      <p>For students with no prior experience. Basics: stance, blocks, kicks and forms.</p>
+    </article>
+    <article class="card">
+      <h3>Competition Team</h3>
+      <p>For athletes interested in tournaments. Focus on technique, strategy and conditioning.</p>
+    </article>
+    <article class="card">
+      <h3>Family Classes</h3>
+      <p>Parents and kids train together. Builds bonding and shared growth.</p>
+    </article>
+  </div>
+</section>
 
-  <!-- PROGRAMS -->
-  <section id="programs" class="section programs container">
-    <h2 class="section-title">Our <span class="accent">Programs</span></h2>
-    <div class="program-grid">
-      <article class="card">
-        <h3>Kids Taekwondo</h3>
-        <p>Age-appropriate classes (4–12 years). Focus on discipline, respect, and basics.</p>
-      </article>
-      <article class="card">
-        <h3>Teens & Adults</h3>
-        <p>Classes for ages 13+. Self-defense, training and rank progression.</p>
-      </article>
-      <article class="card">
-        <h3>Intermediate & Advanced</h3>
-        <p>Higher-level training: sparring, forms, and competition prep.</p>
-      </article>
-      <article class="card">
-        <h3>Beginner Program</h3>
-        <p>For students with no prior experience. Basics: stance, blocks, kicks and forms.</p>
-      </article>
-      <article class="card">
-        <h3>Competition Team</h3>
-        <p>For athletes interested in tournaments. Focus on technique, strategy and conditioning.</p>
-      </article>
-      <article class="card">
-        <h3>Family Classes</h3>
-        <p>Parents and kids train together. Builds bonding and shared growth.</p>
-      </article>
+<section id="schedule" class="section schedule">
+  <div class="container">
+    <h2 class="section-title"><span class="accent">Weekly Schedule</span></h2>
+    <div class="schedule-table-wrap">
+      <table class="schedule-table">
+        <thead>
+          <tr><th>Day</th><th>Time</th><th>Class</th></tr>
+        </thead>
+        <tbody id="schedule-body"></tbody>
+      </table>
+      <p style="text-align:center;margin-top:20px;color:#ccc;font-size:0.9rem">Times and classes subject to change — contact us to confirm.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SCHEDULE -->
-  <section id="schedule" class="section schedule" aria-label="Weekly schedule"
-           data-schedule-bg="schedule-bg.png">
-    <div class="container">
-      <h2 class="section-title"> <span class="accent">Weekly Schedule</span></h2>
-      <div class="schedule-table-wrap">
-        <table class="schedule-table" aria-describedby="schedule-note">
-          <thead>
-            <tr><th>Day</th><th>Time</th><th>Class</th></tr>
-          </thead>
-          <tbody id="schedule-body">
-            <!-- JS will fill these rows from the schedule array -->
-          </tbody>
-        </table>
-        <p id="schedule-note" class="muted">Times and classes subject to change — contact us to confirm.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- MEMBERSHIP -->
-<section class="membership section container">
-  <h2 class="section-title">
-    <span class="accent" id="membership">Membership &amp; Pricing</span>
-  </h2>
+<section id="membership" class="membership section container">
+  <h2 class="section-title"><span class="accent">Membership &amp; Pricing</span></h2>
   <div class="membership-grid">
-    <!-- Basic Plan -->
     <div class="price-card">
       <h3>Basic</h3>
       <p class="price">₱1,500 / month</p>
@@ -134,7 +135,6 @@
       </ul>
     </div>
 
-    <!-- Standard Plan (Recommended) -->
     <div class="price-card recommended">
       <div class="ribbon">Recommended</div>
       <h3>Standard</h3>
@@ -145,7 +145,6 @@
       </ul>
     </div>
 
-    <!-- Family Plan -->
     <div class="price-card">
       <h3>Family</h3>
       <p class="price">₱3,500 / month</p>
@@ -157,67 +156,58 @@
   </div>
 </section>
 
-<!-- INSTRUCTORS SECTION -->
-  <section class="instructors-section" id="instructors">
-    <h2 class="section-title">Meet Our Professional Trainers</h2>
-    <p class="section-subtitle">We’re at your service with our experienced staff!</p>
+<section class="instructors-section section" id="instructors">
+  <h2 class="section-title">Meet Our Professional Trainers</h2>
+  <p style="text-align:center;color:#ebebeb;max-width:600px;margin:0 auto 50px">We're at your service with our experienced staff!</p>
 
-    <div class="instructors-container">
-
-      <!-- Rodolfo -->
-      <div class="instructor-card">
-        <div class="instructor-image">
-          <img src="rodolfo.png" alt="Rodolfo Reyes Jr.">
-          <div class="instructor-info">
-            <h3>Rodolfo Reyes Jr.</h3>
-            <p>Black Belt • International Competitor</p>
-            <a href="rodolfo.html" class="btn">View Profile</a>
-          </div>
-        </div>
+  <div class="instructors-container">
+    <div class="instructor-card">
+      <div class="instructor-image">
+        <img src="rodolfo.png" alt="Rodolfo Reyes Jr.">
       </div>
-
-      <!-- Samuel -->
-      <div class="instructor-card">
-        <div class="instructor-image">
-          <img src="samuel.png" alt="Samuel Morrison">
-          <div class="instructor-info">
-            <h3>Samuel Morrison</h3>
-            <p>Black Belt • International Competitor</p>
-            <a href="samuel.html" class="btn">View Profile</a>
-          </div>
-        </div>
+      <div class="instructor-info">
+        <h3>Rodolfo Reyes Jr.</h3>
+        <p>Black Belt • International Competitor</p>
+        <a href="rodolfo.html" class="btn">View Profile</a>
       </div>
-
-      <!-- Pauline -->
-      <div class="instructor-card">
-        <div class="instructor-image">
-          <img src="pauline.png" alt="Pauline Louise Lopez">
-          <div class="instructor-info">
-            <h3>Pauline Louise Lopez</h3>
-            <p>Black Belt • International Competitor</p>
-            <a href="pauline.html" class="btn">View Profile</a>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </section>
-  <!-- ACHIEVEMENTS SECTION -->
-<section id="achievements" class="achievements-scroll-section">
+
+    <div class="instructor-card">
+      <div class="instructor-image">
+        <img src="samuel.png" alt="Samuel Morrison">
+      </div>
+      <div class="instructor-info">
+        <h3>Samuel Morrison</h3>
+        <p>Black Belt • International Competitor</p>
+        <a href="samuel.html" class="btn">View Profile</a>
+      </div>
+    </div>
+
+    <div class="instructor-card">
+      <div class="instructor-image">
+        <img src="pauline.png" alt="Pauline Louise Lopez">
+      </div>
+      <div class="instructor-info">
+        <h3>Pauline Louise Lopez</h3>
+        <p>Black Belt • International Competitor</p>
+        <a href="pauline.html" class="btn">View Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements" class="achievements-scroll-section section">
   <div class="container">
-    <h2 class="section-title">
-      Our <span class="accent">Achievements</span>
-    </h2>
-    <p class="section-subtitle">
-      Celebrating the champions who brought pride and honor to Agila Taekwondo Academy.
-    </p>
+    <h2 class="section-title">Our <span class="accent">Achievements</span></h2>
+    <p style="text-align:center;color:#666;max-width:600px;margin:0 auto 40px">Celebrating the champions who brought pride and honor to Agila Taekwondo Academy.</p>
 
     <div class="achievements-wrapper">
       <button class="arrow left" aria-label="Previous">&#10094;</button>
 
-      <div class="achievements-track">
+       <div class="achievements-track">
         <!-- Achievement Card 1 -->
         <div class="achievement-card" 
+             data-img="kurt.jpg"
              data-athlete="Kurt Bryan Barbosa" 
              data-medal="🥇 Gold Medal" 
              data-event="2023 SEA Games" 
@@ -300,19 +290,13 @@
           </div>
         </div>
       </div>
-
       <button class="arrow right" aria-label="Next">&#10095;</button>
     </div>
 
-    <div class="carousel-dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
+    <div class="carousel-dots"></div>
   </div>
 </section>
 
-<!-- Achievement Modal -->
 <div id="achievement-modal" class="modal">
   <div class="modal-content">
     <span class="close-modal">&times;</span>
@@ -322,6 +306,7 @@
         <h2 id="modal-athlete"></h2>
         <div class="modal-medal" id="modal-medal"></div>
         <div class="modal-details">
+          
           <p><strong>Event:</strong> <span id="modal-event"></span></p>
           <p><strong>Category:</strong> <span id="modal-category"></span></p>
           <p class="modal-description" id="modal-details"></p>
@@ -331,60 +316,47 @@
   </div>
 </div>
 
+<section id="about" class="section">
+  <img src="neck.png" alt="Neck" class="belt-neck">
 
-<!-- ABOUT US SECTION-->
- <section id="about">
-  <div class="about-content">
-    <img src="neck.png" alt="Neck" class="belt-neck">
-
-    <h2 class="section-title"><strong>About</strong> <span><strong>Us</strong></span></h2>
-    <p class="about-text">
-      At <strong>AGILA TAEKWONDO ACADEMY</strong>, we believe Taekwondo is more than just a sport—it’s a way of life. Our mission is to help students of all ages build <strong>discipline, respect, confidence, and strength</strong> while mastering the art of Taekwondo.
-      <br><br>
-      Founded by world-class athletes and experienced instructors, our academy offers a <strong>supportive environment</strong> where everyone can thrive. Whether you’re a beginner or an advanced practitioner, we have programs tailored to your needs.
-      <br><br>
-      Join us and become part of a community that values <strong>growth, perseverance, and excellence.</strong> Let’s embark on this journey together and unleash your inner power!
-      <br><br>
-      Ready to take the first step? <a href="#footer" class="link">Book a free trial class today!</a>
-    </p>  
+  <h2 class="section-title"><strong>About</strong> <span class="accent"><strong>Us</strong></span></h2>
+  <p class="about-text">
+    At <strong>AGILA TAEKWONDO ACADEMY</strong>, we believe Taekwondo is more than just a sport—it's a way of life. Our mission is to help students of all ages build <strong>discipline, respect, confidence, and strength</strong> while mastering the art of Taekwondo.
+    <br><br>
+    Founded by world-class athletes and experienced instructors, our academy offers a <strong>supportive environment</strong> where everyone can thrive. Whether you're a beginner or an advanced practitioner, we have programs tailored to your needs.
+    <br><br>
+    Join us and become part of a community that values <strong>growth, perseverance, and excellence.</strong> Let's embark on this journey together and unleash your inner power!
+    <br><br>
+    Ready to take the first step? <a href="#footer">Book a free trial class today!</a>
+  </p>
   <div class="belt-graphic">
     <img src="belt.png" alt="Belt" class="belt-img">
   </div>
 </section>
 
-  </div>
-</section>
-
-
-  <!-- CONTACT -->
-<!-- CONTACT AND FOOTER-->
-<section id="footer">
-<footer class="footer">
+<footer class="footer" id="footer">
   <div class="footer-container">
-    <!-- Logo and tagline -->
     <div class="footer-logo">
       <img src="whiteLogo.png" alt="Agila Taekwondo Logo">
       <h3>Agila Taekwondo Academy</h3>
       <p>Discipline · Strength · Respect</p>
     </div>
 
-    <!-- Quick links -->
     <div class="footer-links">
       <h4>Quick Links</h4>
       <ul>
         <li><a href="#programs">Programs</a></li>
         <li><a href="#instructors">Instructors</a></li>
-        <li><a href="#pricing">Membership</a></li>
-        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#about">About Us</a></li>
       </ul>
     </div>
 
-    <!-- Contact info -->
     <div class="footer-contact">
       <h4>Contact</h4>
       <p>123 Dojang Ave, Your City</p>
       <p>+63 912 345 6789</p>
-      <p><a href="mailto:hello@yourgym.com">hello@yourgym.com</a></p>
+      <p><a href="mailto:hello@agilatkd.com">hello@agilatkd.com</a></p>
       <div class="socials">
         <a href="#">Facebook</a>
         <a href="#">Instagram</a>
@@ -392,17 +364,15 @@
       </div>
     </div>
 
-    <!-- Message form -->
-<div class="footer-message">
-  <h4>Send Us a Message</h4>
-  <form id="contact-form" class="message-form">
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" rows="3" placeholder="Your message..." required></textarea>
-    <button type="submit">Send</button>
-  </form>
-</div>
-
+    <div class="footer-message">
+      <h4>Send Us a Message</h4>
+      <form id="contact-form" class="message-form">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" rows="3" placeholder="Your message..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
   </div>
 
   <div class="footer-bottom">
@@ -410,6 +380,6 @@
   </div>
 </footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
