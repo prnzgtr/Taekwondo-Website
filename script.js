@@ -1,4 +1,3 @@
-//Enhanced Version
 // Schedule Data
 const scheduleData = [
   { day: "Monday", time: "4:00 - 6:00 PM", className: "Kids" },
