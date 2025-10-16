@@ -28,21 +28,23 @@ scheduleBody.innerHTML = scheduleData.map(s => `
 
 /* contact form handling */
 const form = document.getElementById("contact-form");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const message = form.message.value.trim();
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
 
-  if (!name || !email || !message) {
-    alert("Please fill out all fields.");
-    return;
-  }
+    if (!name || !email || !message) {
+      alert("Please fill out all fields.");
+      return;
+    }
 
-  // For demo we just show a friendly confirmation. Replace with AJAX to your backend if needed.
-  alert(`Thanks, ${name}! Your message has been received. We'll reply to ${email} soon.`);
-  form.reset();
-});
+    alert(`Thanks, ${name}! Your message has been received. We'll reply to ${email} soon.`);
+    form.reset();
+  });
+}
+
 
 /* Optional: dynamically set hero figure image if provided as CSS var or HTML image src */
 (function setHeroAssets(){
@@ -237,4 +239,17 @@ document.addEventListener('keydown', (e) => {
     modal.classList.remove('show');
     document.body.style.overflow = '';
   }
+});
+let lastScrollY = window.scrollY;
+const header = document.querySelector('.site-header');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > lastScrollY && window.scrollY > 80) {
+    // Scrolling down
+    header.classList.add('hide-on-scroll');
+  } else {
+    // Scrolling up
+    header.classList.remove('hide-on-scroll');
+  }
+  lastScrollY = window.scrollY;
 });
