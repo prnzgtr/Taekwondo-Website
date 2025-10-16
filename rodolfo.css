@@ -9,7 +9,7 @@ html, body {width:100%;overflow-x:hidden}
 html{scroll-behavior:smooth}
 body{
   font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color:var(--text);background:var(--bg) url("keyence-bg.jpg");-webkit-font-smoothing:antialiased;
+  color:var(--text);background:url("BackgroundRodolfo.png");-webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;line-height:1.45;
 }
 .container{max-width:var(--container-width);margin:0 auto;padding:0 20px}
@@ -334,7 +334,6 @@ cubic-bezier(0.77, 0, 0.175, 1);
    ========================= */
 .achievements-section {
   position: relative;
-  background: url('morisson.jpg') center/cover no-repeat;
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
