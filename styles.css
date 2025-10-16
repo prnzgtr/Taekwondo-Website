@@ -646,9 +646,10 @@ cubic-bezier(0.77, 0, 0.175, 1);
 
 .ribbon {
   position: absolute;
-  top: 33px;
-  right: -46px;
-  background: linear-gradient(135deg, var(--brand), #8b0000);
+  top: -6px;
+  right: -127px;
+  background: linear-gradient(135deg, #c8161d, #330303, #a71414, #ff0000);
+  background-size: 300% 300%;
   color: #fff;
   padding: 8px 40px;
   font-size: 0.85rem;
@@ -657,7 +658,31 @@ cubic-bezier(0.77, 0, 0.175, 1);
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   text-transform: uppercase;
   letter-spacing: 1px;
-  
+  animation: ribbonShine 3s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.ribbon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  animation: ribbonGloss 2s infinite;
+}
+
+@keyframes ribbonShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes ribbonGloss {
+  0% { left: -100%; }
+  100% { left: 200%; }
 }
 
 .price-card h3 {
@@ -1272,6 +1297,12 @@ cubic-bezier(0.77, 0, 0.175, 1);
     border-radius: 3px;
     transition: all 0.4s ease;
 }
+  .ribbon{
+    right: -260px;
+    top: 1px;
+    padding: 8px 40px;
+    font-size: 0.9rem;
+  }
 
   .header-inner {
     padding: 10px 20px;
@@ -1311,6 +1342,11 @@ cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 @media (max-width: 600px) {
+  .ribbon{
+    right: -100px;
+    padding: 6px 30px;
+    font-size: 0.75rem;
+  }
   .hero-content{
     margin-top: 120px;
   }
