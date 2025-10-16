@@ -1,40 +1,115 @@
-/* Basic reset */
-*{box-sizing:border-box}
-html,body{height:100%}
+/* =========================
+   Agila Taekwondo Stylesheet
+   ========================= */
+
+/* ----------- BASIC RESET ----------- */
+
+*{box-sizing:border-box;margin:0;padding:0}
+html, body {width:100%;overflow-x:hidden}
+html{scroll-behavior:smooth}
 body{
-  margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale; line-height:1.45;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--text);background:var(--bg) url("keyence-bg.jpg");-webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;line-height:1.45;
 }
 .container{max-width:var(--container-width);margin:0 auto;padding:0 20px}
 
-html, body {
+/* Loading Screen */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  overflow-x: hidden; /* disables horizontal scrolling */
+  background: linear-gradient(135deg, #1a1a1a 0%, #c8161d 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader {
+  width: 80px;
+  height: 80px;
+  border: 8px solid rgba(255,255,255,0.2);
+  border-top: 8px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 @media screen and (min-width: 769px) {
   body {
     overflow: hidden; /* ensures no horizontal scroll on desktop */
   }
-  
 }
-/* Remove hyperlink color and underline for all links */
-a, a:visited, a:active {
+
+/* ----------- LINKS ----------- */
+a,
+a:visited,
+a:active {
   color: #111;
   text-decoration: none;
 }
 
-/* Make .logo-text (Agila Taekwondo) look like default black text */
-.logo-text,
-span.logo-text {
-    font-weight: 800;
-    font-size: 20px;
-    color: #000;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+/* ----------- LOGO ----------- */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease;
 }
-/* Header */
-/* ===== Header Layout ===== */
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-img {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #c8161d, #330303);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 24px;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(200,22,29,0.3);
+}
+
+.logo-text {
+  font-weight: 800;
+  font-size: 20px;
+  color: #000;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+
+/* ----------- HEADER ----------- */
 .site-header {
   position: sticky;
   background: #fff;
@@ -44,32 +119,36 @@ span.logo-text {
   top: 0;
   z-index: 100;
 }
+
 .site-header.hide-on-scroll {
-  top: -100px; /* or -your-header-height */
+  top: -100px; /* hides header when scrolling down */
 }
-/* FLEX container without centered constraints */
+
+/* ----------- HEADER INNER ----------- */
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* push logo left, nav right */
+  justify-content: space-between;
   width: 100%;
-  padding: 12px 60px; /* adjust side spacing */
+  padding: 12px 60px;
   margin: 0;
   box-sizing: border-box;
 }
-/* ====== Mobile Hamburger Menu ====== */
+
+/* ----------- HAMBURGER MENU ----------- */
+/* Hamburger Menu */
 .hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 29px;
-  height: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 100;
-  position: relative;
-  margin-left: auto; /* Push to the right */
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 29px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    position: relative;
+    margin-left: auto;
 }
 
 .hamburger span {
@@ -91,36 +170,37 @@ span.logo-text {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Mobile menu overlay */
+/* ----------- MOBILE MENU ----------- */
+
 .mobile-menu {
-  position: fixed;
-  top: 0;
-  left: 0; /* start aligned to the left edge */
-  width: 60%; /* or whatever width fits your design */
-  height: 100vh;
-  background: linear-gradient(160deg, #b91d1d, #111);
-  transform: translateX(190%); /* hidden offscreen to the right */
-  transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-  z-index: 90;
-  display: flex;
-  align-items: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100vh;
+    background: linear-gradient(160deg, #b91d1d, #111);
+    transform: translateX(190%);
+    transition: transform 0.6s 
+cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 90;
+    display: flex;
+    align-items: flex-start;
 }
 
-/* When menu is active (slides in) */
 .mobile-menu.active {
-  transform: translateX(100%); /* slides into view */
-}
-
-.mobile-menu li {
-  margin: 18px 0;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.4s ease;
+  transform: translateX(100%);
 }
 
 .mobile-menu ul {
   list-style: none;
+  padding: 0;
   text-align: left;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+
 }
 
 .mobile-menu li {
@@ -147,62 +227,34 @@ span.logo-text {
   color: #000000;
 }
 
-/* Show hamburger only on mobile */
+/* ----------- RESPONSIVE NAVIGATION ----------- */
 @media (max-width: 768px) {
   .desktop-nav {
     display: none;
   }
+
   .hamburger {
     display: flex;
   }
+
   .hamburger.active span {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: #ffffff;
-  border-radius: 3px;
-  transition: all 0.4s ease;
-}
-/* .hamburger.active span:hover {
-  color: #000000;
-} */
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 3px;
+    transition: all 0.4s ease;
+  }
 }
 
-/* Remove container centering if inherited */
+/* ----------- CONTAINER RESET ----------- */
 .container {
   max-width: none !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 
-/* LOGO area */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: inherit;
-}
-
-#AgilaLogo {
-  width: 70px;
-  height: auto;
-  object-fit: contain;
-}
-
-.logo-text {
-  font-weight: 800;
-  font-size: 20px;
-  color: #000;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-/* NAVIGATION */
-.header-nav {
-  margin-left: auto; /* ensures right edge alignment */
-}
-
+/* ----------- NAVIGATION ----------- */
 .header-nav ul {
   display: flex;
   list-style: none;
@@ -215,19 +267,36 @@ span.logo-text {
   text-decoration: none;
   color: #333;
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 5px 0;
+}
+
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--brand);
+  transition: width 0.3s ease;
+}
+
+.header-nav a:hover::after {
+  width: 100%;
 }
 
 .header-nav a:hover {
   color: #d62828;
 }
 
-/* Responsive */
+/* ----------- RESPONSIVE HEADER ----------- */
 @media (max-width: 768px) {
   .header-inner {
-    flex-direction: row; /* Changed to row */
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between; /* Added to align logo and hamburger */
+    justify-content: space-between;
     gap: 10px;
     padding: 10px 20px;
   }
@@ -247,15 +316,25 @@ span.logo-text {
   }
 }
 
+/* ----------- MAIN NAV LINKS ----------- */
+.main-nav a {
+  margin-left: 18px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+}
 
-/* Nav */
-.main-nav a{margin-left:18px;text-decoration:none;color:var(--text);font-weight:600;font-size:14px}
-.main-nav a:hover{color:var(--accent)}
+.main-nav a:hover {
+  color: var(--accent);
+}
 
-/* ===== Achievements Section ===== */
+/* =========================
+   ACHIEVEMENTS SECTION
+   ========================= */
 .achievements-section {
   position: relative;
-  background: url('BackgroundRodolfo.png') center/cover no-repeat;
+  background: url('morisson.jpg') center/cover no-repeat;
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
@@ -280,7 +359,7 @@ span.logo-text {
 }
 
 .content h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font size */
+  font-size: clamp(2rem, 5vw, 3.5rem);
   color: #ff4040;
   font-weight: 800;
   margin-bottom: 25px;
@@ -294,7 +373,7 @@ span.logo-text {
   line-height: 1.8;
 }
 
-/* Athlete Image */
+/* ----------- ATHLETE IMAGE ----------- */
 .athlete {
   position: absolute;
   right: 5%;
@@ -304,20 +383,32 @@ span.logo-text {
 }
 
 .athlete img {
-  height: clamp(280px, 50vh, 550px);
+  height: clamp(70%, 50vh, 50%);
   object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.7));
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7));
 }
 
-/* ===== Animations ===== */
+/* ----------- ANIMATIONS ----------- */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .fade-in {
@@ -328,10 +419,27 @@ span.logo-text {
   animation: fadeInRight 1.2s ease forwards;
 }
 
-/* ===== Responsive Breakpoints ===== */
+/* ----------- RESPONSIVE BREAKPOINTS ----------- */
+/* Hide hamburger on desktop */
+@media (min-width: 1025px) {
+  .hamburger {
+    display: none;
+    visibility: hidden;
+  }
+}
 
-/* Tablets (≤ 1024px) */
+/* Show hamburger on mobile/tablet */
 @media (max-width: 1024px) {
+  .hamburger {
+    display: flex;
+    visibility: visible;
+    align-items: center;
+  }
+.header-nav ul {
+    display: none;
+    visibility: hidden;
+}
+
   .header-inner {
     padding: 12px 30px;
   }
@@ -359,14 +467,13 @@ span.logo-text {
   }
 }
 
-/* Mobile Phones (≤ 600px) */
 @media (max-width: 600px) {
   .site-header {
     position: relative;
   }
 
   .header-inner {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
@@ -397,4 +504,3 @@ span.logo-text {
     margin-top: 20px;
   }
 }
-
