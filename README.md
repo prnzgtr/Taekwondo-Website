@@ -1,5 +1,5 @@
 # Taekwondo-Website
-WERE THE OWNER || ANY UNFAIR AND UNCREDITTED USE WILL BE HANDLED BY COPYRIGHT INFRINGEMENT, ALL ASSEST USE ARE UNDER FAIR USE.
+We are the rightful creators and owners of this website project. Any unauthorized, unfair, or uncredited use of its content will be considered a violation of copyright and may be subject to appropriate action. All assets used within this project fall under Fair Use for educational and non-commercial purposes.
 
 # Disclaimer
 This website project, titled “Agila Taekwondo Academy Website,” is purely fictional and was created for educational purposes only.
